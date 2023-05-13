@@ -43,12 +43,13 @@ class Menu extends Component {
         }
     }
 
+
     render() {
         return (
             <div className="menu">
                 {
-                    this.state.menu_items.map(({ title, id, imageUrl, size }) =>
-                        <MenuItem key={id} title={title.toUpperCase()} imageUrl={imageUrl} size={size} />
+                    this.state.menu_items.map(({ title, id, imageUrl, size, linkUrl }) =>
+                        <MenuItem key={id} title={title.toUpperCase()} imageUrl={imageUrl} size={size} linkUrl={linkUrl} />
                     )
                 }
 
