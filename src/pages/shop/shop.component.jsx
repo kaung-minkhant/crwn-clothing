@@ -8,13 +8,13 @@ import './shop.styles.scss'
 class ShopPage extends Component {
     constructor(props) {
         super(props);
-        this.states = {
+        this.state = {
             collections: SHOP_DATA
         }
     }
 
     render() {
-        const { collections } = this.states;
+        const { collections } = this.state;
         return (
             <div className="shop-page">
                 {
