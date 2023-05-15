@@ -2,13 +2,12 @@ import React from "react";
 
 import './form-input.styles.scss'
 
-const FormInput = ({ handleChange, label, required, ...otherProps }) => {
+const FormInput = ({ handleChange, label, ...otherProps }) => {
     return (
         <div className="container">
             <div className="did-floating-label-content">
                 <input className="did-floating-input"
                     onChange={handleChange}
-                    required={required}
                     {...otherProps}
                     placeholder=" "
                 />

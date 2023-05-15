@@ -20,7 +20,7 @@ class SignIn extends React.Component {
     }
 
     handleChange = event => {
-        console.log(event);
+        // console.log(event);
         const { name, value } = event.target
         this.setState({ [name]: value })
 
@@ -40,7 +40,7 @@ class SignIn extends React.Component {
                         type={'email'}
                         value={this.state.email}
                         handleChange={this.handleChange}
-                        required={true}
+                        required
                     />
 
                     <FormInput
@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                         type={'password'}
                         value={this.state.password}
                         handleChange={this.handleChange}
-                        required={true}
+                        required
                     />
 
                     <div className="form-buttons">

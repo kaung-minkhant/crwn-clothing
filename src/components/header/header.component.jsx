@@ -2,6 +2,7 @@ import React from "react";
 import { ReactComponent as Logo } from '../../assets/084 crown.svg'
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase/firebase.utils";
+import { signOut } from "firebase/auth";
 import { withRouter } from "react-router-dom";
 import './header.styles.scss'
 
@@ -17,7 +18,7 @@ const Header = ({ currentUser, history }) => {
                 {
                     currentUser ?
                         // (<div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>)
-                        (<Link to={history.location.pathname} onClick={() => auth.signOut()}>SIGN OUT</Link>)
+                        (<Link to={history.location.pathname} onClick={() => signOut(auth)}>SIGN OUT</Link>)
                         : (<Link to={'/signin'} className="option">SIGN IN</Link>)
                 }
             </div>

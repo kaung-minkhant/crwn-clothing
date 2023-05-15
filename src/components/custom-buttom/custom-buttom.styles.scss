@@ -19,8 +19,7 @@
     font-weight: 700;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: #fff;
         outline: 0;
     }
