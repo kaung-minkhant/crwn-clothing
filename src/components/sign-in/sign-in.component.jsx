@@ -3,7 +3,6 @@ import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { withRouter } from "react-router-dom";
 
 import './sign-in.styles.scss'
 
@@ -65,7 +64,7 @@ class SignIn extends React.Component {
 
                     <div className="form-buttons">
                         <CustomButtom type={'submit'}>Sign In</CustomButtom>
-                        <CustomButtom onClick={() => signInWithGoogle(this.props.history)} type={'button'} isGoogleSignIn>Sign in with Google</CustomButtom>
+                        <CustomButtom onClick={signInWithGoogle} type={'button'} isGoogleSignIn>Sign in with Google</CustomButtom>
                     </div>
                 </form>
             </div>
@@ -73,4 +72,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default withRouter(SignIn);
+export default SignIn;

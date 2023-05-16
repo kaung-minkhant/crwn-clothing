@@ -2,7 +2,6 @@ import React from "react";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
-import { withRouter } from "react-router-dom";
 
 import './sign-up.styles.scss'
 
@@ -38,7 +37,6 @@ class SignUp extends React.Component {
             .then(async ({ user }) => {
                 // console.log(user)
                 await createUserProfileDocument(user, { displayName })
-                this.props.history.push('/')
                 this.setState({
                     displayName: '',
                     email: '',
@@ -100,4 +98,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default withRouter(SignUp);
+export default SignUp;

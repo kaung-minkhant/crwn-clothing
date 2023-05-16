@@ -20,10 +20,9 @@ provider.setCustomParameters({ promt: 'select_account' });
 
 export const auth = getAuth();
 
-export const signInWithGoogle = async (history) => {
+export const signInWithGoogle = async () => {
     try {
         await signInWithPopup(auth, provider)
-        history.push('/')
     } catch (error) {
         console.log(`Error occured: ${error}`)
     }
