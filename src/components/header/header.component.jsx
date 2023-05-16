@@ -5,6 +5,7 @@ import { auth } from "../../firebase/firebase.utils";
 import { signOut } from "firebase/auth";
 import { withRouter } from "react-router-dom";
 import './header.styles.scss'
+import { connect } from "react-redux";
 
 const Header = ({ currentUser, history }) => {
     return (
@@ -18,7 +19,8 @@ const Header = ({ currentUser, history }) => {
                 {
                     currentUser ?
                         // (<div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>)
-                        (<Link to={history.location.pathname} onClick={() => signOut(auth)}>SIGN OUT</Link>)
+                        (<Link to={history.location.pathname}
+                            onClick={() => signOut(auth)}>SIGN OUT</Link>)
                         : (<Link to={'/signin'} className="option">SIGN IN</Link>)
                 }
             </div>
@@ -26,4 +28,8 @@ const Header = ({ currentUser, history }) => {
     );
 }
 
-export default withRouter(Header);
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(withRouter(Header));
