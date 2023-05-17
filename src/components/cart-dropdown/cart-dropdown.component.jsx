@@ -13,9 +13,11 @@ const CartDropdown = ({ cartItems }) => {
         < div className="cart-dropdown" >
             <div className="cart-items">
                 {
-                    cartItems.map(
-                        cartItem => (< CartItem key={cartItem} item={cartItem} />)
-                    )
+                    cartItems.length ?
+                        (cartItems.map(
+                            cartItem => (< CartItem key={cartItem} item={cartItem} />)
+                        ))
+                        : (<span className="empty-message">Cart is empty!</span>)
                 }
             </div>
             <CustomButton>go to checkout</CustomButton>
@@ -24,7 +26,7 @@ const CartDropdown = ({ cartItems }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    cartItems: selectCartItems(state)
+    cartItems: selectCartItems
 })
 
 export default connect(mapStateToProps)(CartDropdown);
