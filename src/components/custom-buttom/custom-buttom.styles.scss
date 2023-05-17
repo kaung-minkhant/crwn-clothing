@@ -37,4 +37,15 @@
             box-shadow: 0 0 40px 40px #00008B inset;
         }
     }
+
+    &.inverted {
+        background-color: black;
+        color: #fff;
+        outline: 0;
+
+        &:hover {
+            color: black;
+            box-shadow: 0 0 40px 40px white inset;
+        }
+    }
 }

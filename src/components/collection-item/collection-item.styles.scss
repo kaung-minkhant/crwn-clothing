@@ -5,6 +5,8 @@
     height: 350px;
     // border: 1px solid black;
     align-items: center;
+    position: relative;
+    cursor: pointer;
 
     .image {
         width: 100%;
@@ -28,6 +30,23 @@
 
         .price {
             width: 10%;
+        }
+    }
+
+    .custom-button {
+        position: absolute;
+        top: 270px;
+        display: none;
+    }
+
+    &:hover {
+        .image {
+            opacity: 0.8;
+        }
+
+        .custom-button {
+            display: block;
+            opacity: 0.85;
         }
     }
 }
