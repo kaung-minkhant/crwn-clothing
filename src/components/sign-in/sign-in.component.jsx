@@ -20,7 +20,7 @@ class SignIn extends React.Component {
         const { email, password } = this.state;
         await signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
-                this.props.history.push("/")
+                // this.props.history.push("/")
                 // console.log(userCredential)
             })
             .catch(error => {
