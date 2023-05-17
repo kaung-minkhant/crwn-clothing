@@ -1,15 +1,20 @@
 import React from "react";
-import { ReactComponent as Logo } from '../../assets/084 crown.svg'
-import { Link } from "react-router-dom";
-import { auth } from "../../firebase/firebase.utils";
-import { signOut } from "firebase/auth";
 import './header.styles.scss'
-import { connect } from "react-redux";
+
+import { ReactComponent as Logo } from '../../assets/084 crown.svg'
+
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+
+import { Link } from "react-router-dom";
+
+import { auth } from "../../firebase/firebase.utils";
+import { signOut } from "firebase/auth";
+
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { selectCartHidden } from "../../redux/cart/cart.selector";
 import { selectCurrentUser } from "../../redux/user/user.selector";
-import { createStructuredSelector } from "reselect";
 
 const Header = ({ currentUser, hidden }) => {
     return (

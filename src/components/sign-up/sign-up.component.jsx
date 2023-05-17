@@ -1,9 +1,8 @@
 import React from "react";
+import './sign-up.styles.scss'
 
 import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
-
-import './sign-up.styles.scss'
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import { createUserWithEmailAndPassword } from "firebase/auth";
