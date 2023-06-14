@@ -14,8 +14,10 @@ import { onSnapshot } from 'firebase/firestore';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { Route, Switch, Redirect } from 'react-router-dom'
-import { setCurrentUser } from './redux/user/user.actions';
+// import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
+// import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser } from './redux/user/userSlice';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -23,10 +25,9 @@ class App extends React.Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {
-
       if (userAuth) {
         // console.log(userAuth);
-        createUserProfileDocument(userAuth)
+        // createUserProfileDocument(userAuth)
         const userRef = await createUserProfileDocument(userAuth);
         this.unsubscribeFromUser = onSnapshot(userRef, snapShot => {
           // console.log(snapShot)
