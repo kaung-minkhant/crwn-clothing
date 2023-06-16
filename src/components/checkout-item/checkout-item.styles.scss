@@ -7,10 +7,12 @@
     font-size: 20px;
     align-items: center;
     text-align: center;
+    // justify-content: space-between;
 
     .image-container {
         width: 22%;
         height: fit-content;
+        flex-shrink: 0;
 
         img {
             width: 70%;
@@ -23,6 +25,7 @@
     .quantity,
     .price {
         width: 22%;
+        flex-shrink: 0;
     }
 
     .quantity {
@@ -36,12 +39,15 @@
         .value {
             margin: 0 10px;
         }
-
-        // padding-left: 20px;
     }
 
-    .remove-button {
-        padding-left: 12px;
-        cursor: pointer;
+    .remove-container {
+        width: 100%;
+
+        .remove-button {
+            padding-left: 12px;
+            cursor: pointer;
+        }
     }
+
 }

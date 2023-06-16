@@ -20,7 +20,9 @@ const CheckoutItem = ({ cartItem }) => {
                 <div className="arrow" onClick={() => dispatch(addItemToCart(cartItem))}>&#10095;</div>
             </span>
             <span className="price">{price}</span>
-            <div className="remove-button" onClick={() => dispatch(deleteItemFromCart(cartItem))}> &#10005;</div>
+            <div className="remove-container">
+                <div className="remove-button" onClick={() => dispatch(deleteItemFromCart(cartItem))}> &#10005;</div>
+            </div>
         </div>
     );
 }
