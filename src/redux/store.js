@@ -19,7 +19,11 @@ import cartReducer from "./cart/cartSlice"
 import menuReducer from "./menu/menuSlice"
 import shopReducer from "./shop/shopSlice"
 
-// const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === "development") {
+    middlewares.concat(logger)
+}
 
 const reducers = combineReducers({
     user: userReducer,
@@ -44,7 +48,7 @@ const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat(logger)
+        }).concat(middlewares)
 })
 
 export default store;
