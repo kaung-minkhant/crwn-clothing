@@ -1,5 +1,5 @@
 import React from "react";
-import './collection-item.styles.scss'
+import { AddtoCartButton, CollectionFooterContainer, CollectionItemContainer, ItemBackgroundImageContainer, ItemNameSpan, ItemPriceSpan } from "./collection-item.styles";
 
 import CustomButton from '../custom-buttom/custom-buttom.component'
 
@@ -12,18 +12,16 @@ const CollectionItem = ({ item }) => {
     const dispatch = useDispatch();
     const { name, price, imageUrl } = item;
     return (
-        <div className="collection-item">
-            <div className="image"
-                style={{
-                    backgroundImage: `url(${imageUrl})`
-                }}
+        <CollectionItemContainer>
+            <ItemBackgroundImageContainer className="image"
+                imageUrl={imageUrl}
             />
-            <div className="collection-footer">
-                <span className="name">{name}</span>
-                <span className="price">{price}</span>
-            </div>
-            <CustomButton onClick={() => dispatch(addItemToCart(item))} inverted>Add to cart</CustomButton>
-        </div >
+            <CollectionFooterContainer>
+                <ItemNameSpan>{name}</ItemNameSpan>
+                <ItemPriceSpan>{price}</ItemPriceSpan>
+            </CollectionFooterContainer>
+            <AddtoCartButton as={CustomButton} onClick={() => dispatch(addItemToCart(item))} inverted>Add to cart</AddtoCartButton>
+        </CollectionItemContainer>
     );
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import './checkout.styles.scss'
+import CheckOutStyles from './checkout.styles'
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
@@ -14,40 +14,42 @@ const CheckoutPage = () => {
     const cartItems = useSelector(selectCartItems);
     const totalPrice = useSelector(selectPriceTotal);
     return (
-        <div className="checkout-page">
-            <div className="checkout-header">
-                <div className="header-block">
+        <CheckOutStyles.CheckoutPageContainer>
+            <CheckOutStyles.CheckOutHeaderContainer>
+                <CheckOutStyles.HeaderBlockContainer>
                     <span>Product</span>
-                </div>
-                <div className="header-block">
+                </CheckOutStyles.HeaderBlockContainer>
+                <CheckOutStyles.HeaderBlockContainer>
                     <span>Description</span>
-                </div>
-                <div className="header-block">
+                </CheckOutStyles.HeaderBlockContainer>
+                <CheckOutStyles.HeaderBlockContainer>
                     <span>Quantity</span>
-                </div>
-                <div className="header-block">
+                </CheckOutStyles.HeaderBlockContainer>
+                <CheckOutStyles.HeaderBlockContainer>
                     <span>Price</span>
-                </div>
-                <div className="header-block">
+                </CheckOutStyles.HeaderBlockContainer>
+                <CheckOutStyles.HeaderBlockContainer>
                     <span>Remove</span>
-                </div>
-            </div>
+                </CheckOutStyles.HeaderBlockContainer>
+            </CheckOutStyles.CheckOutHeaderContainer>
             {
                 cartItems.map(
                     cartItem => (<CheckoutItem key={cartItem.id} cartItem={cartItem} />)
                 )
             }
-            <div className="total">
+            <CheckOutStyles.TotalContainer>
                 <span>TOTAL: ${totalPrice}</span>
-            </div>
+            </CheckOutStyles.TotalContainer>
 
-            <div className="card-warning">
+            <CheckOutStyles.CardWarningContainer>
                 *Please use the following credit information for test payments*
                 <br />
                 4242 4242 4242 4242 - Exp: 01/25 - CVV: 123
-            </div>
-            <StripeCheckoutButton price={totalPrice} />
-        </div>
+            </CheckOutStyles.CardWarningContainer>
+            <CheckOutStyles.StripeCheckoutButtomWithStyle>
+                <StripeCheckoutButton price={totalPrice} />
+            </CheckOutStyles.StripeCheckoutButtomWithStyle>
+        </CheckOutStyles.CheckoutPageContainer>
     );
 }
 

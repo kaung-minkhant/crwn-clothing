@@ -1,5 +1,5 @@
 import React from "react";
-import './header.styles.scss'
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionContainer } from "./header.styles";
 
 import { ReactComponent as Logo } from '../../assets/084 crown.svg'
 
@@ -21,29 +21,28 @@ const Header = () => {
     const currentUser = useSelector(selectCurrentUser);
     const hidden = useSelector(selectCartHidden);
     return (
-        <div className="header">
-            <Link to={'/'} className="logo-container">
-                <Logo className="logo" />
-            </Link>
-            <div className="options">
-                <Link to={'/shop'} className="option">SHOP</Link>
-                <Link to={'/contact'} className="option">CONTACT</Link>
+        <HeaderContainer>
+            <LogoContainer to={'/'}>
+                <Logo />
+            </LogoContainer>
+            <OptionsContainer>
+                <OptionContainer as={Link} to={'/shop'}>SHOP</OptionContainer>
+                <OptionContainer as={Link} to={'/contact'}>CONTACT</OptionContainer>
                 {
                     currentUser ?
                         // (<div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>)
-                        (<Link
+                        (<OptionContainer as={Link}
                             to={'/'}
                             onClick={() => signOut(auth)}
-                            className="option"
-                        >SIGN OUT</Link>)
-                        : (<Link to={'/signin'} className="option">SIGN IN</Link>)
+                        >SIGN OUT</OptionContainer>)
+                        : (<OptionContainer as={Link} to={'/signin'}>SIGN IN</OptionContainer>)
                 }
                 <CartIcon />
-            </div>
+            </OptionsContainer>
             {
                 hidden ? null : <CartDropdown />
             }
-        </div>
+        </HeaderContainer>
     );
 }
 

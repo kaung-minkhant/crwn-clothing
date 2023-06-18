@@ -1,5 +1,5 @@
 import React from "react";
-import './collection.styles.scss'
+import CollectionStyles from "./collection.styles";
 
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
@@ -9,16 +9,16 @@ import { selectCollection } from "../../redux/shop/shop.selector";
 const CollectionPage = ({ match }) => {
     const collection = useSelector(selectCollection(match.params.collectionID))
     return (
-        < div className="collection-page" >
-            <h1 className="title">{collection.title}</h1>
-            <div className="items">
+        < CollectionStyles.CollectionPageContainer>
+            <CollectionStyles.CollectionTitleH1>{collection.title}</CollectionStyles.CollectionTitleH1>
+            <CollectionStyles.CollectionItemsContainer>
                 {
                     collection.items.map(item => (
-                        <CollectionItem item={item} />
+                        <CollectionItem key={item.id} item={item} />
                     ))
                 }
-            </div>
-        </div >
+            </CollectionStyles.CollectionItemsContainer>
+        </CollectionStyles.CollectionPageContainer >
     )
 }
 

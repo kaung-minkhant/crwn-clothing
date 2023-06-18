@@ -18,10 +18,11 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { selectCurrentUser } from './redux/user/user.selector';
 // import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from './redux/user/userSlice';
+// import { selectCollectionAsArray } from './redux/shop/shop.selector';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
-  unsubscribeFromUser = null;
+  // unsubscribeFromUser = null;
   componentDidMount() {
     const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {
@@ -29,7 +30,8 @@ class App extends React.Component {
         // console.log(userAuth);
         // createUserProfileDocument(userAuth)
         const userRef = await createUserProfileDocument(userAuth);
-        this.unsubscribeFromUser = onSnapshot(userRef, snapShot => {
+        // this.unsubscribeFromUser =
+        onSnapshot(userRef, snapShot => {
           // console.log(snapShot)
           setCurrentUser({
             currentUser: {
@@ -42,11 +44,12 @@ class App extends React.Component {
         setCurrentUser(userAuth)
       }
     })
+    // createCollectionAndDocuments(this.props.collection_array);
   }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
-    this.unsubscribeFromUser();
+    // this.unsubscribeFromUser();
   }
 
 
@@ -68,7 +71,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  // collection_array: selectCollectionAsArray
 })
 
 const mapDispatchToProps = dispatch => ({

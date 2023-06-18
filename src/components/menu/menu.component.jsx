@@ -1,5 +1,5 @@
 import React from "react";
-import "./menu.styles.scss"
+import { MenuContainer } from "./menu.styles";
 
 import MenuItem from "../menu-item/menu-item.component";
 
@@ -9,14 +9,14 @@ import { selectMenuItems } from "../../redux/menu/menu.selector";
 const Menu = () => {
     const menu_items = useSelector(selectMenuItems)
     return (
-        <div className="menu">
+        <MenuContainer>
             {
                 menu_items.map(({ title, id, imageUrl, size, linkUrl }) =>
                     <MenuItem key={id} title={title.toUpperCase()} imageUrl={imageUrl} size={size} linkUrl={linkUrl} />
                 )
             }
 
-        </div>
+        </MenuContainer>
     )
 }
 

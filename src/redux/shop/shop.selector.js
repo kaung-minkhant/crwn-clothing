@@ -22,10 +22,10 @@ export const selectShopItems = createSelector(
 export const selectCollection = collectionID =>
     createSelector(
         [selectShopItems],
-        (shopItems) => shopItems[collectionID]
+        (shopItems) => shopItems ? shopItems[collectionID] : { title: '', items: [] }
     )
 
 export const selectCollectionAsArray = createSelector(
     [selectShopItems],
-    (shopItems) => Object.keys(shopItems).map(key => shopItems[key])
+    (shopItems) => shopItems ? Object.keys(shopItems).map(key => shopItems[key]) : []
 )

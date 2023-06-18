@@ -22,7 +22,7 @@ import shopReducer from "./shop/shopSlice"
 const middlewares = [];
 
 if (process.env.NODE_ENV === "development") {
-    middlewares.concat(logger)
+    middlewares.push(logger)
 }
 
 const reducers = combineReducers({

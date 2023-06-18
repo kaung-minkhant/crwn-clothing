@@ -1,8 +1,8 @@
 import React from "react";
-import './cart-dropdown.styles.scss'
+import { CartDropdownContainer, CartItemsContainer, CheckoutButton, EmptyMessageSpan } from "./cart-dropdown.styles";
+
 
 import CartItem from "../cart-item/cart-item.component";
-import CustomButton from '../custom-buttom/custom-buttom.component'
 
 import { withRouter } from "react-router-dom";
 
@@ -16,20 +16,20 @@ const CartDropdown = ({ history }) => {
     const cartItems = useSelector(selectCartItems);
     // console.log(cartItems)
     return (
-        < div className="cart-dropdown" >
-            <div className="cart-items">
+        <CartDropdownContainer>
+            <CartItemsContainer>
                 {
                     cartItems.length ?
                         (cartItems.map(
                             cartItem => (< CartItem key={cartItem.id} item={cartItem} />)
                         ))
-                        : (<span className="empty-message">Cart is empty!</span>)
+                        : (<EmptyMessageSpan>Cart is empty!</EmptyMessageSpan>)
                 }
-            </div>
-            <CustomButton onClick={() => {
+            </CartItemsContainer>
+            <CheckoutButton onClick={() => {
                 history.push("/checkout")
-            }}>go to checkout</CustomButton>
-        </div >
+            }}>go to checkout</CheckoutButton>
+        </CartDropdownContainer >
     );
 }
 

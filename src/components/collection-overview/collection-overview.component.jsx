@@ -1,5 +1,5 @@
 import React from "react";
-import './collection-overview.styles.scss'
+import { CollectionOverviewContainer, CollectionTitle } from "./collection-overview.styles";
 
 import CollectionPreview from "../../components/collection-preview/collection-preview.component";
 
@@ -9,14 +9,14 @@ import { selectCollectionAsArray } from "../../redux/shop/shop.selector";
 const CollectionOverview = () => {
     const collections = useSelector(selectCollectionAsArray)
     return (
-        <div className="collection-overview">
-            <h1 className="collection-title">Collections</h1>
+        <CollectionOverviewContainer>
+            <CollectionTitle>Collections</CollectionTitle>
             {
                 collections.map(({ id, ...otherCollectionProps }) => (
                     <CollectionPreview key={id} {...otherCollectionProps} />
                 ))
             }
-        </div>
+        </CollectionOverviewContainer>
     )
 }
 

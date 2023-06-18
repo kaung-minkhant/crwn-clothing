@@ -1,5 +1,6 @@
 import React from "react";
-import './sign-up.styles.scss'
+import { SignUpButtons } from "./sign-up.styles";
+import { SignInSignUpContainer, SignInSignUpTitle } from "../sign-in/sign-in.styles";
 
 import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
@@ -52,10 +53,10 @@ class SignUp extends React.Component {
     render() {
         const { displayName, email, password, confirmPassword } = this.state;
         return (
-            <div className="sign-up">
-                <h2 className="sign-up-title">I do not have account</h2>
-                <span className="sign-up-text">Sign up with your email and password</span>
-                <form className="sign-up-form" onSubmit={this.handleSubmit}>
+            <SignInSignUpContainer>
+                <SignInSignUpTitle>I do not have account</SignInSignUpTitle>
+                <span>Sign up with your email and password</span>
+                <form onSubmit={this.handleSubmit}>
                     <FormInput
                         handleChange={this.handleChange}
                         label={'Display Name'}
@@ -88,11 +89,11 @@ class SignUp extends React.Component {
                         type={'password'}
                         value={confirmPassword}
                     />
-                    <div className="sign-up-button">
+                    <SignUpButtons>
                         <CustomButtom type={'submit'} >sign up</CustomButtom>
-                    </div>
+                    </SignUpButtons>
                 </form>
-            </div>
+            </SignInSignUpContainer>
         );
     }
 }
