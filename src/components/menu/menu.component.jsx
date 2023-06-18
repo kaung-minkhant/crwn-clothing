@@ -4,10 +4,11 @@ import { MenuContainer } from "./menu.styles";
 import MenuItem from "../menu-item/menu-item.component";
 
 import { useSelector } from "react-redux";
-import { selectMenuItems } from "../../redux/menu/menu.selector";
+import { selectMenuItemsAsArray } from "../../redux/menu/menu.selector";
+
 
 const Menu = () => {
-    const menu_items = useSelector(selectMenuItems)
+    const menu_items = useSelector(selectMenuItemsAsArray)
     return (
         <MenuContainer>
             {
@@ -18,6 +19,7 @@ const Menu = () => {
 
         </MenuContainer>
     )
+
 }
 
 

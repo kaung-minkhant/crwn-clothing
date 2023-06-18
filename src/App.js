@@ -18,7 +18,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { selectCurrentUser } from './redux/user/user.selector';
 // import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from './redux/user/userSlice';
-// import { selectCollectionAsArray } from './redux/shop/shop.selector';
+
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -44,7 +44,7 @@ class App extends React.Component {
         setCurrentUser(userAuth)
       }
     })
-    // createCollectionAndDocuments(this.props.collection_array);
+    // createCollectionAndDocuments(this.props.collection_array, "menu");
   }
 
   componentWillUnmount() {
@@ -72,7 +72,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  // collection_array: selectCollectionAsArray
+  // collection_array: selectMenuItems
 })
 
 const mapDispatchToProps = dispatch => ({

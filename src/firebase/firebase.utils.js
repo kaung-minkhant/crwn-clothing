@@ -28,13 +28,13 @@ export const signInWithGoogle = async () => {
     }
 }
 
-export const createCollectionAndDocuments = async (collection_array) => {
-    const collectionRef = collection(db, 'collections')
+export const createCollectionAndDocuments = async (collection_array, collection_name) => {
+    const collectionRef = collection(db, collection_name)
     const batch = writeBatch(db)
     collection_array.forEach(collection_item => {
-        const { title, items } = collection_item
+        const { title, imageUrl } = collection_item
         const itemRef = doc(collectionRef)
-        batch.set(itemRef, { title, items })
+        batch.set(itemRef, { title, imageUrl })
     })
     await batch.commit()
     // console.log(collectionSnap)
@@ -59,6 +59,23 @@ export const retrieveCollectionItems = async (snapshot) => {
         return accumulator
     }, {})
     return collection_obj
+}
+
+export const retrieveMenuItems = async (snapshot) => {
+    const menu_array = snapshot.docs.map(item => {
+        const { title, imageUrl } = item.data()
+        const id = item.id
+        return { id, title, imageUrl }
+    }
+    )
+    const menu_length = menu_array.length
+    const menu_obj = menu_array.reduce((accumulator, currentItem, index) => {
+        const key = encodeURI(currentItem.title.toLowerCase())
+        accumulator[key] = { ...currentItem, linkUrl: `shop/${key}` }
+        if (index >= menu_length - 2) accumulator[key]['size'] = 'large'
+        return accumulator
+    }, {})
+    return menu_obj
 }
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
