@@ -8,11 +8,11 @@ import CustomButton from '../custom-buttom/custom-buttom.component'
 import { useDispatch } from "react-redux";
 import { addItemToCart } from '../../redux/cart/cartSlice'
 
-const CollectionItem = ({ item }) => {
+const CollectionItem = ({ item, collectionPage }) => {
     const dispatch = useDispatch();
     const { name, price, imageUrl } = item;
     return (
-        <CollectionItemContainer>
+        <CollectionItemContainer collectionPage={collectionPage}>
             <ItemBackgroundImageContainer className="image"
                 imageUrl={imageUrl}
             />

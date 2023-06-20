@@ -29,3 +29,8 @@ export const selectCollectionAsArray = createSelector(
     [selectShopItems],
     (shopItems) => shopItems ? Object.keys(shopItems).map(key => shopItems[key]) : []
 )
+
+export const selectIsFetching = createSelector(
+    [selectShop],
+    (shop) => shop.isFetching
+)

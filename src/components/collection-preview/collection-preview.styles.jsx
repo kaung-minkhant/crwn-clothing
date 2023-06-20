@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CollectionPreviewContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 `
 
 export const CollectionPreviewTitle = styled.h1`

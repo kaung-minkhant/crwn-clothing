@@ -18,6 +18,12 @@ class HomePage extends Component {
     }
     async componentDidMount() {
         const menuRef = retrieveCollectionRef('menu')
+        // getDocs(menuRef)
+        //     .then(async snapshot => {
+        //         const menu_items = await retrieveMenuItems(snapshot)
+        //         this.props.updateMenu(menu_items)
+        //         this.setState({ loading: false })
+        //     })
         onSnapshot(menuRef, async snapShot => {
             const menu_items = await retrieveMenuItems(snapShot)
             this.props.updateMenu(menu_items)

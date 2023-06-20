@@ -8,6 +8,7 @@ export const CollectionItemContainer = styled.div`
     align-items: center;
     position: relative;
     cursor: pointer;
+    ${({ collectionPage }) => collectionPage ? "padding-bottom: 20px;" : ""}
 
     &:hover {
         .image {
