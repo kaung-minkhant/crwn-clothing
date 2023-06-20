@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuContainer } from "./menu.styles";
 
-import MenuItem from "../menu-item/menu-item.component";
+import MenuItemContainer from "../menu-item/menu-item.container";
 
 import { useSelector } from "react-redux";
 import { selectMenuItemsAsArray } from "../../redux/menu/menu.selector";
@@ -13,7 +13,7 @@ const Menu = () => {
         <MenuContainer>
             {
                 menu_items.map(({ title, id, imageUrl, size, linkUrl }) =>
-                    <MenuItem key={id} title={title.toUpperCase()} imageUrl={imageUrl} size={size} linkUrl={linkUrl} />
+                    <MenuItemContainer key={id} title={title.toUpperCase()} imageUrl={imageUrl} size={size} linkUrl={linkUrl} />
                 )
             }
 

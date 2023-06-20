@@ -4,7 +4,7 @@ import { HeaderContainer, LogoContainer, OptionsContainer, OptionContainer } fro
 import { ReactComponent as Logo } from '../../assets/084 crown.svg'
 
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CartDropdownContainer from "../cart-dropdown/cart-dropdown.container";
 
 import { Link } from "react-router-dom";
 
@@ -40,7 +40,7 @@ const Header = () => {
                 <CartIcon />
             </OptionsContainer>
             {
-                hidden ? null : <CartDropdown />
+                hidden ? null : <CartDropdownContainer />
             }
         </HeaderContainer>
     );

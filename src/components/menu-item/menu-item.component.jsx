@@ -1,7 +1,6 @@
 import React from "react";
 import { BackgroundImageContainer, ContentContainer, MenuItemContainer, MenuSubtitleSpan, MenuTitle } from "./menu-item.styles";
 
-import { withRouter } from "react-router-dom"
 
 const MenuItem = ({ title, imageUrl, size, linkUrl, match, history }) => {
     return (
@@ -17,4 +16,4 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, match, history }) => {
     );
 }
 
-export default withRouter(MenuItem);
+export default MenuItem;

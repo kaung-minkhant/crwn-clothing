@@ -4,8 +4,6 @@ import { CartDropdownContainer, CartItemsContainer, CheckoutButton, EmptyMessage
 
 import CartItem from "../cart-item/cart-item.component";
 
-import { withRouter } from "react-router-dom";
-
 // import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
 import { useSelector } from "react-redux";
@@ -38,4 +36,4 @@ const CartDropdown = ({ history }) => {
 // })
 
 // export default connect(mapStateToProps)(withRouter(CartDropdown));
-export default withRouter(CartDropdown);
+export default CartDropdown;
