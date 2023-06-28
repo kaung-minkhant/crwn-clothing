@@ -3,45 +3,40 @@ import { HomePageContainer } from "./homepage.styles";
 
 import { WithSpinner } from "../../components/with-spinner/with-spinner.component"
 import Menu from "../../components/menu/menu.component";
+import MenuContainer from "../../components/menu/menu.container";
 
-import { retrieveCollectionRef, retrieveMenuItems } from "../../firebase/firebase.utils";
-import { onSnapshot } from "firebase/firestore";
-import { updateMenuItems } from "../../redux/menu/menuSlice";
 import { connect } from "react-redux";
+import { fetchMenu } from "../../redux/menu/menuSlice";
 
-
-const MenuWithSpinner = WithSpinner(Menu)
 
 class HomePage extends Component {
-    state = {
-        loading: true
-    }
-    async componentDidMount() {
-        const menuRef = retrieveCollectionRef('menu')
+    componentDidMount() {
+        this.props.fetchMenu();
+        // const menuRef = retrieveCollectionRef('menu')
         // getDocs(menuRef)
         //     .then(async snapshot => {
         //         const menu_items = await retrieveMenuItems(snapshot)
         //         this.props.updateMenu(menu_items)
         //         this.setState({ loading: false })
         //     })
-        onSnapshot(menuRef, async snapShot => {
-            const menu_items = await retrieveMenuItems(snapShot)
-            this.props.updateMenu(menu_items)
-            this.setState({ loading: false })
-        })
+        // onSnapshot(menuRef, async snapShot => {
+        //     const menu_items = await retrieveMenuItems(snapShot)
+        //     this.props.updateMenu(menu_items)
+        //     this.setState({ loading: false })
+        // })
     }
     render() {
-        const { loading } = this.state;
         return (
             <HomePageContainer>
-                <MenuWithSpinner isLoading={loading} />
+                <MenuContainer />
             </HomePageContainer>
         );
     }
 }
 
+
 const mapDispatchToProps = dispatch => ({
-    updateMenu: menu_items => dispatch(updateMenuItems(menu_items))
+    fetchMenu: () => dispatch(fetchMenu())
 })
 
 export default connect(null, mapDispatchToProps)(HomePage);

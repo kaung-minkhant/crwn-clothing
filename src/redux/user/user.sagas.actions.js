@@ -1,0 +1,4 @@
+export const userSagaActions = {
+  GOOGLE_SIGNIN_START: "GOOGLE_SIGNIN_START",
+  EMAIL_SIGNIN_START: "EMAIL_SIGNIN_START",
+};

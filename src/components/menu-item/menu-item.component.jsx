@@ -8,7 +8,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, match, history }) => {
             history.push(`${match.url}${linkUrl}`)
         }} >
             <BackgroundImageContainer imageUrl={imageUrl} className="background-image" />
-            <ContentContainer className="content">
+            <ContentContainer className="content./">
                 <MenuTitle>{title}</MenuTitle>
                 <MenuSubtitleSpan>SHOP NOW</MenuSubtitleSpan>
             </ContentContainer>

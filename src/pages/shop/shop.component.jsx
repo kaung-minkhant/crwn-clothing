@@ -6,12 +6,13 @@ import CollectionPageContainer from "../collection/collection.container";
 
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchShopCollection } from "../../redux/shop/shopSlice";
+import { shopSagaActions } from "../../redux/shop/shop.sagas.actions";
+// import { fetchShopCollection } from "../../redux/shop/shopSlice";
 
 class ShopPage extends Component {
 
     componentDidMount() {
-        this.props.fetchShopCollection('collections');
+        this.props.fetchShopCollection();
     }
 
     render() {
@@ -35,7 +36,8 @@ class ShopPage extends Component {
 // }
 
 const mapDispatchToProps = dispatch => ({
-    fetchShopCollection: (collection_name) => dispatch(fetchShopCollection(collection_name))
+    // fetchShopCollection: (collection_name) => dispatch(fetchShopCollection(collection_name))
+    fetchShopCollection: () => dispatch({type: shopSagaActions.fetch_collection, payload: 'collections'})
 })
 
 

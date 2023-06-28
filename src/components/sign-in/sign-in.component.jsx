@@ -5,8 +5,11 @@ import { SignInButtons, SignInSignUpContainer, SignInSignUpTitle } from "./sign-
 import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
 
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { connect } from "react-redux";
+import { userSagaActions } from "../../redux/user/user.sagas.actions";
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -40,6 +43,7 @@ class SignIn extends React.Component {
 
 
     render() {
+        const {googleSignInStart} = this.props;
         return (
             <SignInSignUpContainer>
                 <SignInSignUpTitle>I already have an account</SignInSignUpTitle>
@@ -66,7 +70,7 @@ class SignIn extends React.Component {
 
                     <SignInButtons>
                         <CustomButtom type={'submit'}>Sign In</CustomButtom>
-                        <CustomButtom onClick={signInWithGoogle} type={'button'} isGoogleSignIn>Sign in with Google</CustomButtom>
+                        <CustomButtom onClick={googleSignInStart} type={'button'} isGoogleSignIn>Sign in with Google</CustomButtom>
                     </SignInButtons>
                 </form>
             </SignInSignUpContainer>
@@ -74,4 +78,8 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = dispatch => ({
+    googleSignInStart: () => dispatch({type: userSagaActions.GOOGLE_SIGNIN_START})
+})
+
+export default connect(null, mapDispatchToProps)(SignIn);
