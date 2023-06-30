@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { HomePageContainer } from "./homepage.styles";
 
-import { WithSpinner } from "../../components/with-spinner/with-spinner.component"
-import Menu from "../../components/menu/menu.component";
 import MenuContainer from "../../components/menu/menu.container";
 
 import { connect } from "react-redux";

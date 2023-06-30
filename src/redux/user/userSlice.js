@@ -9,28 +9,16 @@ export const userSlice = createSlice({
   name: "userSlice",
   initialState: INITIAL_STATE,
   reducers: {
-    googleSigninSuccess: (state, action) => {
+    signInSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.errorMessage = null;
     },
-    googleSigninFailure: (state, action) => {
-      state.errorMessage = action.payload.message;
-    },
-    emailSigninSuccess: (state, action) => {
-      state.currentUser = action.payload;
-      state.errorMessage = null;
-    },
-    emailSigninFailure: (state, action) => {
+    signInFailure: (state, action) => {
       state.errorMessage = action.payload.message;
     },
   },
 });
 
-export const {
-  googleSigninFailure,
-  googleSigninSuccess,
-  emailSigninFailure,
-  emailSigninSuccess,
-} = userSlice.actions;
+export const { signInFailure, signInSuccess } = userSlice.actions;
 
 export default userSlice.reducer;

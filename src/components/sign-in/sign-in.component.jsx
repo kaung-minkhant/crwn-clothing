@@ -5,9 +5,6 @@ import { SignInButtons, SignInSignUpContainer, SignInSignUpTitle } from "./sign-
 import FormInput from "../form-input/form-input.component";
 import CustomButtom from "../custom-buttom/custom-buttom.component";
 
-import { auth } from "../../firebase/firebase.utils";
-import { signInWithEmailAndPassword } from "firebase/auth";
-
 import { connect } from "react-redux";
 import { userSagaActions } from "../../redux/user/user.sagas.actions";
 
@@ -23,14 +20,7 @@ class SignIn extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
         const { email, password } = this.state;
-        await signInWithEmailAndPassword(auth, email, password)
-            .then(userCredential => {
-                // this.props.history.push("/")
-                // console.log(userCredential)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        this.props.emailSignInStart(email, password);
         this.setState({ email: '', password: '' })
     }
 
@@ -79,7 +69,8 @@ class SignIn extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    googleSignInStart: () => dispatch({type: userSagaActions.GOOGLE_SIGNIN_START})
+    googleSignInStart: () => dispatch({type: userSagaActions.GOOGLE_SIGNIN_START}),
+    emailSignInStart: (email, password) => dispatch({type: userSagaActions.EMAIL_SIGNIN_START, payload: {email, password}})
 })
 
 export default connect(null, mapDispatchToProps)(SignIn);
