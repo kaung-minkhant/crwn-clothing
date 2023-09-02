@@ -16,6 +16,7 @@ import { createStructuredSelector } from "reselect";
 import { Route, Switch, Redirect } from "react-router-dom";
 // import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from "./redux/user/user.selector";
+import { userSagaActions } from "./redux/user/user.sagas.actions";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { setCurrentUser } from "./redux/user/userSlice";
 
@@ -23,6 +24,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
   // unsubscribeFromUser = null;
   componentDidMount() {
+    this.props.check_user()
     // const { setCurrentUser } = this.props;
     // this.unsubscribeFromAuth = onAuthStateChanged(auth, async userAuth => {
     //   if (userAuth) {
@@ -83,6 +85,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  check_user: () => dispatch({type: userSagaActions.CHECK_USER})
   // setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 

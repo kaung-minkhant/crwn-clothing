@@ -17,7 +17,8 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = async event => {
+
+    handleSubmit = event => {
         event.preventDefault();
         const { email, password } = this.state;
         this.props.emailSignInStart(email, password);
@@ -30,7 +31,6 @@ class SignIn extends React.Component {
         this.setState({ [name]: value })
 
     }
-
 
     render() {
         const {googleSignInStart} = this.props;

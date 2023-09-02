@@ -13,11 +13,13 @@ import { signOut } from "firebase/auth";
 
 // import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectCartHidden } from "../../redux/cart/cart.selector";
 import { selectCurrentUser } from "../../redux/user/user.selector";
+import { userSagaActions } from "../../redux/user/user.sagas.actions";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser);
     const hidden = useSelector(selectCartHidden);
     return (
@@ -33,7 +35,7 @@ const Header = () => {
                         // (<div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>)
                         (<OptionContainer as={Link}
                             to={'/'}
-                            onClick={() => signOut(auth)}
+                            onClick={() => dispatch({type: userSagaActions.SIGN_OUT})}
                         >SIGN OUT</OptionContainer>)
                         : (<OptionContainer as={Link} to={'/signin'}>SIGN IN</OptionContainer>)
                 }
